@@ -1,21 +1,17 @@
-# Kibana 4.1.x Docker container
+# docker-kibana
 
-This is [Kibana 4.1.1](https://github.com/elastic/kibana) in a minimal 47MB
-Docker image. Images are tagged by Kibana versions.
+This is [Kibana 4.1.1](https://github.com/elastic/kibana) in a minimal 47MB Docker image. Images are tagged by Kibana versions.
+
+[![Docker Repository on Quay.io](https://quay.io/repository/pires/docker-kibana/status "Docker Repository on Quay.io")](https://quay.io/repository/pires/docker-kibana)
 
 ## Running
 
 ```
-docker run -d -p <host ip>:<host port>:5601 \
-    -e KIBANA_ES_URL=<elasticsearch url> bobrik/kibana
+docker run --name kibana \
+           --detach \
+           --publish 5601:5601 \
+           -e KIBANA_ES_URL=<elasticsearch url> \
+           quay.io/pires/docker-kibana:4.1.1
 ```
 
-You could set `KIBANA_INDEX` env variable to set an index for kibana's data.
-
-## No-highlight patch
-
-Kibana has [unresolved issue](https://github.com/elastic/kibana/issues/2782)
-that triggers an error if you use long text fields. This image has
-patch applied that fixes the problem in tags with postfix `-no-highlighting`.
-
-Once issue is resolved, patch will be removed from this image.
+You could set `KIBANA_INDEX` env variable to set an index for Kibana's data.

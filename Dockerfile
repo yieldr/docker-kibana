@@ -9,7 +9,8 @@ RUN apk --update add curl && \
     rm -rf /opt/kibana-${KIBANA_VERSION}/node && \
     mkdir -p /opt/kibana-${KIBANA_VERSION}/node/bin && \
     ln -sf /usr/bin/node /opt/kibana-${KIBANA_VERSION}/node/bin/node && \
-    apk del curl
+    apk del curl && \
+    rm -rf /var/cache/apk/*
 
 ADD ./run.sh /run.sh
 
