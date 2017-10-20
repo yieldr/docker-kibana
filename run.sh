@@ -4,7 +4,7 @@ set -e
 
 KIBANA_CONF_FILE="/opt/kibana-${KIBANA_VERSION}/config/kibana.yml"
 
-KIBANA_ES_URL=${KIBANA_ES_URL:-http://elasticsearch-logging-proxy:9200}
+KIBANA_ES_URL=${KIBANA_ES_URL:-http://elasticsearch-proxy:9200}
 KIBANA_HOST=${KIBANA_HOST:-0.0.0.0}
 
 sed -i "s;.*elasticsearch\.url:.*;elasticsearch\.url: ${KIBANA_ES_URL};" "${KIBANA_CONF_FILE}"
